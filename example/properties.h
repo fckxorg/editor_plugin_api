@@ -1,6 +1,7 @@
 #include <cstdint>
 #include <string>
 #include <unordered_map>
+#include <memory>
 
 namespace PluginAPI {
 struct Canvas {
@@ -45,4 +46,7 @@ class Plugin {
     virtual void start_apply(Canvas canvas, Position pos) = 0;
     virtual void stop_apply(Canvas canvas, Position pos) = 0;
 };
+
 }  // namespace PluginAPI
+
+extern "C" std::unique_ptr<PluginAPI::Plugin> instantiate();
