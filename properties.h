@@ -22,6 +22,8 @@ struct Property {
 
     DISPLAY_TYPE display_type;
 
+    const char* label;
+
     union {
         int32_t int_value;
         double double_value;
