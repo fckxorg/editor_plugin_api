@@ -6,7 +6,7 @@
 * определить функцию `get_plugin()` следующим образом
 ```c
 extern "C" PluginAPI::Plugin* get_plugin() {
-  return PluginAPI::getInstance<ВАШ ТИП ПЛАГИНА>();
+  return PluginAPI::get_instance<ВАШ ТИП ПЛАГИНА>();
 }
 ```
 
