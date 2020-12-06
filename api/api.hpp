@@ -88,7 +88,7 @@ namespace PluginAPI {
      * Удобно использовать для определения функции get()
      */
     template <typename SomePlugin>
-    PluginAPI::Plugin* getInstance() {    
+    PluginAPI::Plugin* get_instance() {    
         static SomePlugin PLUGIN;
         return &PLUGIN;
     }
