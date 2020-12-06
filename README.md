@@ -3,9 +3,9 @@
 ## Порядок написания плагина
 
 * отнаследоваться от `PluginAPI::Plugin`, переопределить все методы
-* определить функцию `getPlugin()` следующим образом
+* определить функцию `get_plugin()` следующим образом
 ```c
-extern "C" PluginAPI::Plugin* getPlugin() {
+extern "C" PluginAPI::Plugin* get_plugin() {
   return PluginAPI::getInstance<ВАШ ТИП ПЛАГИНА>();
 }
 ```
