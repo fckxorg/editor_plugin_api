@@ -39,7 +39,7 @@ void MyFancyPlugin::apply(PluginAPI::Canvas canvas,
 
 /*============================================================================*/
 
-extern "C" PluginAPI::Plugin* get() {
+extern "C" PluginAPI::Plugin* get_plugin() {
     return PluginAPI::getInstance<MyFancyPlugin>();
 }
 

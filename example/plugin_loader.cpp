@@ -28,7 +28,7 @@ int main(int argc, const char** argv) {
     }
 
     PluginAPI::Plugin* (*get_plugin)() = 
-        reinterpret_cast<PluginAPI::Plugin* (*)()>(dlsym(handle, "get"));
+        reinterpret_cast<PluginAPI::Plugin* (*)()>(dlsym(handle, "get_plugin"));
 
     if (nullptr == get_plugin) {
         printf("%s\n", dlerror());
