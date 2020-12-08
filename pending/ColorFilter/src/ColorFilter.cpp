@@ -10,7 +10,9 @@ bool ColorFilter::deinit() { return true; }
 
 void ColorFilter::start_apply(PluginAPI::Canvas canvas,
                               PluginAPI::Position pos) {
-    for (int64_t i = 0; i < canvas.height * canvas.width; i += 4) {
+    for (int64_t i = 0; i < canvas.height * canvas.width * sizeof(int32_t);
+         i += 4) {
+
         ColorFilterPlugin::Color* current_pixel =
             reinterpret_cast<ColorFilterPlugin::Color*>(canvas.pixels + i);
 
