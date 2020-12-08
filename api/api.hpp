@@ -32,7 +32,12 @@ namespace PluginAPI {
 
     struct Property {
 
-        enum TYPE { PRIMARY_COLOR, SECONDARY_COLOR, THICKNESS };
+        enum TYPE { 
+            PRIMARY_COLOR = 0, 
+            SECONDARY_COLOR = 1, 
+            THICKNESS = 2 
+        };
+        
         enum DISPLAY_TYPE { COLOR_PICKER, SLIDER, INPUTBOX, CHECKBOX };
 
         DISPLAY_TYPE display_type;
