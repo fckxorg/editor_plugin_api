@@ -1,7 +1,7 @@
 #include "../include/GaussianBlur/GaussianBlur.h"
 
 bool GaussianBlur::init() {
-    properties[].display_type =
+    properties[GaussianBlurPlugin::SIGMA].display_type =
         PluginAPI::Property::DISPLAY_TYPE::COLOR_PICKER;
     return true;
 }

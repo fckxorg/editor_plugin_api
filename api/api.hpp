@@ -35,13 +35,6 @@ struct Property {
        должны нумеровать их начиная с COUNT, в противном случае,
        поведение не определено */
 
-    enum TYPE {
-        PRIMARY_COLOR = 0,
-        SECONDARY_COLOR = 1,
-        THICKNESS = 2,
-        COUNT = 3
-    };
-
     enum DISPLAY_TYPE { COLOR_PICKER, SLIDER, INPUTBOX, CHECKBOX };
 
     DISPLAY_TYPE display_type;
@@ -54,6 +47,30 @@ struct Property {
         void* pointer_value;
     };
 };
+
+/* Такая конструкция позволяет расширять enum,
+ * не теряя при этом определенность передаваемых данных */
+
+namespace TYPE {
+struct Type {
+   private:
+    const int32_t value;
+
+   public:
+    explicit Type(int32_t value) : value(value) {}
+
+    operator int32_t() const noexcept { return value; }
+
+    bool operator==(const Type& other) const noexcept {
+        return other.value == value;
+    }
+};
+
+const Type PRIMARY_COLOR = Type(0);
+const Type SECONDARY_COLOR = Type(1);
+const Type THICKNESS = Type(2);
+const Type COUNT = Type(3);
+};  // namespace TYPE
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
@@ -87,7 +104,7 @@ class Plugin {
 
     virtual ~Plugin() = default;
 
-    using PropertyMap = std::unordered_map<Property::TYPE, Property>;
+    using PropertyMap = std::unordered_map<TYPE::Type, Property>;
 
     PropertyMap properties;
 };

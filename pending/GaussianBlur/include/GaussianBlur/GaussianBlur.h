@@ -5,9 +5,9 @@
 namespace GaussianBlurPlugin {
 
 enum Parameters {
-    SIGMA,
-    RADIUS,
-    BORDER
+    SIGMA = PluginAPI::Property::TYPE::COUNT,
+    RADIUS = PluginAPI::Property::TYPE::COUNT + 1,
+    BORDER = PluginAPI::Property::TYPE::COUNT + 2
 };
 
 struct Color {
@@ -24,7 +24,8 @@ class GaussianBlur : public PluginAPI::Plugin {
     bool deinit() override;
 
     void apply(PluginAPI::Canvas canvas, PluginAPI::Position pos) override;
-    void start_apply(PluginAPI::Canvas canvas, PluginAPI::Position pos) override;
+    void start_apply(PluginAPI::Canvas canvas,
+                     PluginAPI::Position pos) override;
     void stop_apply(PluginAPI::Canvas canvas, PluginAPI::Position pos) override;
 };
 
