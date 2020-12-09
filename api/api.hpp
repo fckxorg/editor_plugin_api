@@ -64,6 +64,8 @@ struct Type {
     constexpr bool operator==(const Type& other) const noexcept {
         return other.value == value;
     }
+
+    friend struct std::hash<PluginAPI::TYPE::Type>;
 };
 
 constexpr Type PRIMARY_COLOR = Type(0);
@@ -78,7 +80,20 @@ struct PluginInfo {
     uint16_t version;
     std::string name;
 };
+}  // namespace PluginAPI
 
+namespace std {
+template <>
+struct hash<PluginAPI::TYPE::Type> {
+    size_t operator()(const PluginAPI::TYPE::Type& property_type) const {
+        std::hash<int32_t> type_value_hash;
+
+        return type_value_hash(property_type.value);
+    }
+};
+}
+
+namespace PluginAPI {
 class Plugin {
    public:
     /* init() вызывается в момент подгрузки плагина,
@@ -132,4 +147,5 @@ extern "C" PluginAPI::Plugin* get_plugin();
 ////////////////////////////////////////////////////////////////////////////////
 /*============================================================================*/
 
+/*~~~~~~~~~~~~~~~~~~MISC~~~~~~~~~~~~~~~~~~~~~*/
 #endif
