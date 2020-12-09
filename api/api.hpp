@@ -57,19 +57,19 @@ struct Type {
     const int32_t value;
 
    public:
-    explicit Type(int32_t value) : value(value) {}
+    explicit constexpr Type(int32_t value) : value(value) {}
 
-    operator int32_t() const noexcept { return value; }
+    constexpr operator int32_t() const noexcept { return value; }
 
-    bool operator==(const Type& other) const noexcept {
+    constexpr bool operator==(const Type& other) const noexcept {
         return other.value == value;
     }
 };
 
-const Type PRIMARY_COLOR = Type(0);
-const Type SECONDARY_COLOR = Type(1);
-const Type THICKNESS = Type(2);
-const Type COUNT = Type(3);
+constexpr Type PRIMARY_COLOR = Type(0);
+constexpr Type SECONDARY_COLOR = Type(1);
+constexpr Type THICKNESS = Type(2);
+constexpr Type COUNT = Type(3);
 };  // namespace TYPE
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/

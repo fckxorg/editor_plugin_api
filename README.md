@@ -1,4 +1,5 @@
-# Editor Plugin API
+#
+Editor Plugin API
 
 ## Порядок написания плагина
 
@@ -19,8 +20,8 @@ extern "C" PluginAPI::Plugin* get_plugin() {
 что позволяет вам расширять набор свойств, дописав в коде своего плагина следующую конструкцию:
 ```
 namespace PluginAPI::TYPE {
-    const Type MY_FANCY_TYPE = Type(COUNT);
-    const Type ANOTHER_TYPE = Type(COUNT + 1);
+    constexpr Type MY_FANCY_TYPE = Type(COUNT);
+    constexpr Type ANOTHER_TYPE = Type(COUNT + 1);
 };
 ```
 
