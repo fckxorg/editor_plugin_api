@@ -18,12 +18,22 @@ extern "C" PluginAPI::Plugin* get_plugin() {
 Свойства - это ключи в map `properties` из класса Plugin. Поскольку ключи должны быть строго определенных типов,
 в качестве них используется особый тип - `PluginAPI::TYPE::Type`. На самом деле, `TYPE` - это пространство имен, 
 что позволяет вам расширять набор свойств, дописав в коде своего плагина следующую конструкцию:
+
 ```
-namespace PluginAPI::TYPE {
+namespace PluginAPI {
+namespace TYPE {
     constexpr Type MY_FANCY_TYPE = Type(COUNT);
     constexpr Type ANOTHER_TYPE = Type(COUNT + 1);
 };
+};
 ```
+### Сборка разделяемой библиотеки
+```
+gcc -c -fPIC MyFancyPlugin.cpp
+gcc MyFancyPlugin.o -shared -o MyFancyPlugin.so
+```
+
+
 
 ## Структура поставки плагина
 

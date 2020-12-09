@@ -1,14 +1,19 @@
 #include <cstdint>
+#include <vector>
 
-#include "api.hpp"
+#include "../../../../api/api.hpp"
+
+namespace PluginAPI {
+namespace TYPE {
+
+constexpr Type SIGMA = Type(COUNT);
+constexpr Type RADIUS = Type(COUNT + 1);
+constexpr Type BORDER = Type(COUNT + 2);
+
+};  // namespace TYPE
+};  // namespace PluginAPI
 
 namespace GaussianBlurPlugin {
-
-enum Parameters {
-    SIGMA = PluginAPI::Property::TYPE::COUNT,
-    RADIUS = PluginAPI::Property::TYPE::COUNT + 1,
-    BORDER = PluginAPI::Property::TYPE::COUNT + 2
-};
 
 struct Color {
     uint8_t r;
@@ -17,6 +22,12 @@ struct Color {
     uint8_t a;
 };
 };  // namespace GaussianBlurPlugin
+
+struct Kernel {
+   int32_t size = 0; 
+    
+   std::vector<float> weights;
+};
 
 class GaussianBlur : public PluginAPI::Plugin {
    public:

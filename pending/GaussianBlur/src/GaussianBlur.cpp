@@ -1,18 +1,28 @@
 #include "../include/GaussianBlur/GaussianBlur.h"
 
 bool GaussianBlur::init() {
-    properties[GaussianBlurPlugin::SIGMA].display_type =
-        PluginAPI::Property::DISPLAY_TYPE::COLOR_PICKER;
+    properties[PluginAPI::TYPE::SIGMA].display_type =
+        PluginAPI::Property::DISPLAY_TYPE::SLIDER;
+
+    properties[PluginAPI::TYPE::RADIUS].display_type =
+        PluginAPI::Property::DISPLAY_TYPE::SLIDER;
+
+    properties[PluginAPI::TYPE::BORDER].display_type =
+        PluginAPI::Property::DISPLAY_TYPE::CHECKBOX;
+
     return true;
 }
 
 bool GaussianBlur::deinit() { return true; }
 
 void GaussianBlur::start_apply(PluginAPI::Canvas canvas,
-                              PluginAPI::Position pos) {
-    for (int64_t i = 0; i < canvas.height * canvas.width * sizeof(int32_t);
-         i += 4) {
+                               PluginAPI::Position pos) {
+    GaussianBlurPlugin::Color* pixel_array =
+        reinterpret_cast<GaussianBlurPlugin::Color*>(canvas.pixels);
 
+    GaussianBlurPlugin::Color* output_canvas = new GaussianBlurPlugin::Color[canvas.height * canvas.width]();
+
+    for (int64_t i = 0; i < canvas.height * canvas.width; i += 4) {
         GaussianBlurPlugin::Color* current_pixel =
             reinterpret_cast<GaussianBlurPlugin::Color*>(canvas.pixels + i);
 
@@ -29,7 +39,7 @@ void GaussianBlur::start_apply(PluginAPI::Canvas canvas,
 }
 
 void GaussianBlur::stop_apply(PluginAPI::Canvas canvas,
-                             PluginAPI::Position pos) {}
+                              PluginAPI::Position pos) {}
 
 void GaussianBlur::apply(PluginAPI::Canvas canvas, PluginAPI::Position pos) {}
 
