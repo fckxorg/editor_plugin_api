@@ -1,6 +1,4 @@
 # Editor Plugin API
-![example workflow file path](https://github.com/fckxorg/editor_plugin_api/.github/workflows/c-cpp.yml/badge.svg)
-
 ## Порядок написания плагина
 
 * отнаследоваться от `PluginAPI::Plugin`, переопределить все методы
