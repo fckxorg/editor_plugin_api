@@ -43,8 +43,6 @@ struct Kernel {
    std::vector<float> weights;
 
    Kernel(float sigma, int32_t radius);
-
-   GaussianBlurPlugin::Color apply(Matrix matrix);
 };
 
 class GaussianBlur : public PluginAPI::Plugin {
