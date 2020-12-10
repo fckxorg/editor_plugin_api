@@ -14,4 +14,4 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: build_plugins
-      run: ./CI/build_plugins.py
+      run:  python CI/build_plugins.py
