@@ -17,5 +17,7 @@ jobs:
       run:  python CI/build_plugins.py
     - name: commit changes
       run:  | 
+       git remote set-url origin ${{ secrets.ssh }}
+       git add .
        git commit -m "plugins build"
        git push origin master
