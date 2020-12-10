@@ -1,5 +1,9 @@
+#define _USE_MATH_DEFINES
+
 #include <cstdint>
 #include <vector>
+#include <cassert>
+#include <cmath>
 
 #include "../../../../api/api.hpp"
 
@@ -23,10 +27,22 @@ struct Color {
 };
 };  // namespace GaussianBlurPlugin
 
+
+struct Matrix {
+    GaussianBlurPlugin::Color* color_array;
+    int32_t width;
+    int32_t height;
+
+    GaussianBlurPlugin::Color get_pixel(int32_t x, int32_t y, bool dup_border); 
+    void set_pixel(GaussianBlurPlugin::Color color, int32_t x, int32_t y); 
+};
+
 struct Kernel {
    int32_t size = 0; 
     
    std::vector<float> weights;
+
+   Kernel(float sigma, int32_t radius);
 };
 
 class GaussianBlur : public PluginAPI::Plugin {
