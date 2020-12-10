@@ -13,7 +13,5 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: getting_repo
-      run:  git pull origin master
     - name: build_plugins
       run:  python CI/build_plugins.py

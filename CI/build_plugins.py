@@ -5,7 +5,7 @@ import shutil
 
 build_cmd = 'gcc -c -fPIC '
 
-plugins = glob("pending/*")
+plugins = glob("/github/workspace/pending/*")
 
 for plugin in plugins:
     print("Building plugin " + plugin)
@@ -43,11 +43,11 @@ for plugin in plugins:
     print("Deleting " + object_file)
     os.unlink(object_file)
    
-    if not os.path.exists("plugins/" + plugin_name):
-        os.mkdir("plugins/" + plugin_name)
+    if not os.path.exists("/github/workspace/plugins/" + plugin_name):
+        os.mkdir("/github/workspace/plugins/" + plugin_name)
 
-    shutil.copy2(shared_lib_file, "plugins/" + plugin_name + "/")
-    shutil.copy2(icon_path, "plugins/" + plugin_name + "/") 
+    shutil.copy2(shared_lib_file, "/github/workspace/plugins/" + plugin_name + "/")
+    shutil.copy2(icon_path, "/github/workspace/plugins/" + plugin_name + "/") 
 
     os.unlink(shared_lib_file)
     print("Plagin build finished")
