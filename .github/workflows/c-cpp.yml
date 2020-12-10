@@ -19,6 +19,7 @@ jobs:
       run:  | 
        git config --global user.name 'Maxim Kokryaskin'
        git config --global user.email 'max.kokryashkin@gmail.com'
+       cd /github/workflow
        git add .
        git commit -m "plugins build"
        git push origin master
