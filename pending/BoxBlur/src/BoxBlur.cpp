@@ -3,7 +3,6 @@
 bool BoxBlur::init() {
     properties[PluginAPI::TYPE::THICKNESS].display_type = 
         PluginAPI::Property::DISPLAY_TYPE::SLIDER;
-
     return true;
 }
 

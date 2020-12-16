@@ -64,12 +64,15 @@ Kernel::Kernel(float sigma, int32_t radius) : size(radius) {
 bool GaussianBlur::init() {
     properties[PluginAPI::TYPE::SIGMA].display_type =
         PluginAPI::Property::DISPLAY_TYPE::SLIDER;
+    properties[PluginAPI::TYPE::SIGMA].label = "Sigma";
 
     properties[PluginAPI::TYPE::RADIUS].display_type =
         PluginAPI::Property::DISPLAY_TYPE::SLIDER;
+    properties[PluginAPI::TYPE::RADIUS].label = "Radius";
 
     properties[PluginAPI::TYPE::BORDER].display_type =
         PluginAPI::Property::DISPLAY_TYPE::CHECKBOX;
+    properties[PluginAPI::TYPE::BORDER].label = "Duplicate borders";
 
     return true;
 }
@@ -78,8 +81,10 @@ bool GaussianBlur::deinit() { return true; }
 
 void GaussianBlur::start_apply(PluginAPI::Canvas canvas,
                                PluginAPI::Position pos) {
-    float sigma = properties[PluginAPI::TYPE::SIGMA].double_value;
-    int32_t radius = properties[PluginAPI::TYPE::RADIUS].int_value;
+    float sigma = properties[PluginAPI::TYPE::SIGMA].double_value *
+                  GaussianBlurPlugin::MAX_SIGMA;
+    int32_t radius = properties[PluginAPI::TYPE::RADIUS].double_value *
+                     GaussianBlurPlugin::MAX_BLUR_RADIUS;
     bool dup_border = properties[PluginAPI::TYPE::BORDER].int_value;
 
     auto pixel_array =

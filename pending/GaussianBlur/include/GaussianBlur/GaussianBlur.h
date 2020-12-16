@@ -25,6 +25,9 @@ struct Color {
     uint8_t b;
     uint8_t a;
 };
+
+const int32_t MAX_BLUR_RADIUS = 40;
+const double MAX_SIGMA = 2;
 };  // namespace GaussianBlurPlugin
 
 
