@@ -1,0 +1,25 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: build_plugins
+      run:  python CI/build_plugins.py
+    - name: commit changes
+      run:  | 
+       git config --global user.name 'Maxim Kokryaskin'
+       git config --global user.email 'max.kokryashkin@gmail.com'
+       cd /github/workspace
+       git add .
+       git commit -m "plugins build"
+       git push origin master

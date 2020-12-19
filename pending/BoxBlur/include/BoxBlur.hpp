@@ -1,18 +1,10 @@
-#include <cstdint>
+#ifndef BOXBLUR_PLUGIN_H
+#define BOXBLUR_PLUGIN_H
 
-#include "../../../../api/api.hpp"
+#include "../../../api/api.hpp"
 
-namespace ColorFilterPlugin {
-struct Color {
-    uint8_t r;
-    uint8_t g;
-    uint8_t b;
-    uint8_t a;
-};
-};  // namespace ColorFilterPlugin
-
-class ColorFilter : public PluginAPI::Plugin {
-   public:
+class BoxBlur: public PluginAPI::Plugin {
+public:
     bool init() override;
     bool deinit() override;
 
@@ -21,3 +13,4 @@ class ColorFilter : public PluginAPI::Plugin {
     void stop_apply(PluginAPI::Canvas canvas, PluginAPI::Position pos) override;
 };
 
+#endif
