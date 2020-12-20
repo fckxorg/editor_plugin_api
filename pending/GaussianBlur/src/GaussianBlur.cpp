@@ -1,9 +1,5 @@
 #include "../include/GaussianBlur/GaussianBlur.h"
 
-#include <bits/stdint-uintn.h>
-
-#include <cstdio>
-
 /*~~~~~~~~~~~~~~~~~~~~~~~ Matrix ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 void Matrix::set_pixel(GaussianBlurPlugin::Color color, int32_t x, int32_t y) {
     color_array[y * width + x] = color;
